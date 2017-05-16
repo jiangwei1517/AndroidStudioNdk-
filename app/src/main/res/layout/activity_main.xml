@@ -16,4 +16,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="JNI" />
+    <Button
+        android:layout_below="@+id/btn"
+        android:id="@+id/btn_one_to_two"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="文件拆分" />
 </RelativeLayout>

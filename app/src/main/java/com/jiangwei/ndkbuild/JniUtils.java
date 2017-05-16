@@ -12,4 +12,6 @@ public class JniUtils {
     }
 
     public native String testJni();
+
+    public native void oneFileToTwo(String localPath, String onePath, String secondPath);
 }
