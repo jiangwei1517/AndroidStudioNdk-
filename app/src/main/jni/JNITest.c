@@ -65,3 +65,41 @@ Java_com_jiangwei_ndkbuild_JniUtils_oneFileToTwo(JNIEnv *env, jobject instance, 
     (*env)->ReleaseStringUTFChars(env, onePath_, onePath);
     (*env)->ReleaseStringUTFChars(env, secondPath_, secondPath);
 }
+
+JNIEXPORT void JNICALL
+Java_com_jiangwei_ndkbuild_JniUtils_twoFileInOne(JNIEnv *env, jobject instance, jstring onePath_,
+                                                 jstring secondPath_, jstring combinePath_) {
+    const char *onePath = (*env)->GetStringUTFChars(env, onePath_, 0);
+    const char *secondPath = (*env)->GetStringUTFChars(env, secondPath_, 0);
+    const char *combinePath = (*env)->GetStringUTFChars(env, combinePath_, 0);
+
+    FILE *one_file = fopen(onePath, "r");
+    FILE *two_file = fopen(secondPath, "r");
+    FILE *combine_file = fopen(combinePath, "w");
+    if (one_file != NULL && two_file != NULL) {
+        int len = 0;
+        while ((len = fgetc(one_file)) != EOF) {
+            fputc(len, combine_file);
+        }
+        while ((len = fgetc(two_file)) != EOF) {
+            fputc(len, combine_file);
+        }
+        if (one_file != NULL) {
+            fclose(one_file);
+            one_file = NULL;
+        }
+        if (two_file != NULL) {
+            fclose(two_file);
+            two_file = NULL;
+        }
+        if (combine_file != NULL) {
+            fclose(combine_file);
+            combine_file = NULL;
+        }
+    } else {
+        LOGI("没有找到目标文件\n");
+    }
+    (*env)->ReleaseStringUTFChars(env, onePath_, onePath);
+    (*env)->ReleaseStringUTFChars(env, secondPath_, secondPath);
+    (*env)->ReleaseStringUTFChars(env, combinePath_, combinePath);
+}

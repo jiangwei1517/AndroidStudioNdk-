@@ -34,12 +34,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String localPath = Environment.getExternalStorageDirectory().getAbsolutePath();
-                jniUtils.oneFileToTwo(localPath + File.separator + "text3.md", localPath + File.separator + "text4.md",
-                        localPath + File.separator + "text5.md");
+                // jniUtils.oneFileToTwo(localPath + File.separator + "text3.md", localPath + File.separator +
+                // "text4.md",
+                // localPath + File.separator + "text5.md");
+                //
+                // readFile(localPath, "text4.md");
+                //
+                // readFile(localPath, "text5.md");
 
-                readFile(localPath, "text4.md");
-
-                readFile(localPath, "text5.md");
+                jniUtils.twoFileInOne(localPath + File.separator + "text4.md", localPath + File.separator + "text5.md",
+                        localPath + File.separator + "text6.md");
+                readFile(localPath, "text6.md");
             }
         });
     }
