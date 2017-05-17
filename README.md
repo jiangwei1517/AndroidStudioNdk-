@@ -5,7 +5,11 @@
 * C抛出的异常是Throwable(Error,不是Exception)类型，因此Java的Exception异常无法补获（上一次写错了。。。）ExceptionOccured->ExceptionClear。文档建议用Throwable或者Error获取异常。
 
 ## 参考链接
+使用Android Studio 进行NDK开发和调试
+
 <http://www.jianshu.com/p/2690c9964110>
+
+Android Studio使用gradle-experimental构建NDK工程(无需Android.mk、Application.mk文件)
 <http://www.jianshu.com/p/7844aafe897d>
 
 ## 注意事项
