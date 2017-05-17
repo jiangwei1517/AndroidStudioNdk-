@@ -19,4 +19,5 @@ public class JniUtils {
     public native void twoFileInOne(String onePath, String secondPath, String combinePath);
 
     public native void patchApk(String oldApk, String newApk, String patch);
+
 }

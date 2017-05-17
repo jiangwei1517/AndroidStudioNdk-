@@ -14,11 +14,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 
+import static com.jiangwei.ndkbuild.R.id.btn_one_to_two;
+
 public class MainActivity extends AppCompatActivity {
     private Button btn;
     private Button btnOneToTwo;
     private Button patch;
-
+    private Button btnTwoInOne;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         final String getStrFromC = jniUtils.testJni();
         btn = (Button) findViewById(R.id.btn);
         patch = (Button) findViewById(R.id.patch);
+        btnTwoInOne = (Button) findViewById(R.id.btn_two_in_one);
         patch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, getStrFromC, Toast.LENGTH_SHORT).show();
             }
         });
-        btnOneToTwo = (Button) findViewById(R.id.btn_one_to_two);
+        btnOneToTwo = (Button) findViewById(btn_one_to_two);
         btnOneToTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,13 +77,19 @@ public class MainActivity extends AppCompatActivity {
 
                 readFile(localPath, "text5.md");
 
+            }
+        });
+        btnTwoInOne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String localPath = Environment.getExternalStorageDirectory().getAbsolutePath();
                 /*
                  * 文件合并
                  */
-                // jniUtils.twoFileInOne(localPath + File.separator + "text4.md", localPath + File.separator +
-                // "text5.md",
-                // localPath + File.separator + "text6.md");
-                // readFile(localPath, "text6.md");
+                 jniUtils.twoFileInOne(localPath + File.separator + "text4.md", localPath + File.separator +
+                 "text5.md",
+                 localPath + File.separator + "text6.md");
+                 readFile(localPath, "text6.md");
             }
         });
     }
