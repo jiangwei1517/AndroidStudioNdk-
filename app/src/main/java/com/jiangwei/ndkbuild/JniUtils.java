@@ -8,7 +8,8 @@ package com.jiangwei.ndkbuild;
 
 public class JniUtils {
     static {
-        System.loadLibrary("JNITest");
+        System.loadLibrary("bspatch");
+//        System.loadLibrary("test_jni");
     }
 
     public native String testJni();
@@ -16,4 +17,6 @@ public class JniUtils {
     public native void oneFileToTwo(String localPath, String onePath, String secondPath);
 
     public native void twoFileInOne(String onePath, String secondPath, String combinePath);
+
+    public native void patchApk(String oldApk, String newApk, String patch);
 }

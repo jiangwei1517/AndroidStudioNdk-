@@ -6,6 +6,7 @@
 
 ## 参考链接
 <http://www.jianshu.com/p/2690c9964110>
+<http://www.jianshu.com/p/7844aafe897d>
 
 ## 注意事项
 默认C下printf不会在AS控制台下输出，因此通过JNI打印log。

@@ -23,4 +23,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="文件拆分" />
+
+    <Button
+        android:layout_below="@+id/btn_one_to_two"
+        android:id="@+id/patch"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="差量更新" />
 </RelativeLayout>
